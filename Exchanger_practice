@@ -1,0 +1,48 @@
+import java.util.concurrent.Exchanger;
+
+public class SendStrings
+{
+
+	public static void main(String[] args)
+	{
+		Exchanger<String> exchanger = new Exchanger<String>();
+		StringsGenerator generator1 = new StringsGenerator(exchanger,
+				new String[] { "Europe", "Asia", "America", "Africa", "Australia" });
+		StringsGenerator generator2 = new StringsGenerator(exchanger,
+				new String[] { "Canada", "France", "Lebanon", "Mexico", "Russia" });
+		Thread t1 = new Thread(generator1);
+		t1.start();
+		Thread t2 = new Thread(generator2);
+		t2.start();
+	}
+}
+
+class StringsGenerator implements Runnable
+{
+	Exchanger<String> exchanger;
+	String vec[];
+
+	StringsGenerator(Exchanger<String> exchanger, String vec[])
+	{
+		this.exchanger = exchanger;
+		this.vec = vec;
+	}
+
+	public void run()
+	{
+		for (int i = 0; i < vec.length; i++)
+		{
+			try
+			{
+				String str = exchanger.exchange(vec[i]);
+				System.out.println(
+						Thread.currentThread().getName() + "  " + " \treceived=" + str + "  " + " \tsent=" + vec[i]);
+			} catch (InterruptedException e)
+			{
+				System.out.println(e);
+			}
+		}
+
+	}
+
+}
