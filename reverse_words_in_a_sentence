@@ -1,0 +1,32 @@
+public class prac1
+{
+	public static void main(String[] args)
+	{
+		String str="maor levi";
+		int i,end,j=0,size=str.length()-1;
+		StringBuffer token=new StringBuffer();
+		
+		
+		for (i=0;i<=size;i++)
+		{
+			
+			if (str.charAt(i)==' ' || i==size)
+			{
+				end = i == size ? i : i-1;
+
+				while (end>=j)
+				{
+					token.append(str.charAt(end));
+					end--;
+				}
+				token.append(" ");
+				j=i+1;
+			}
+
+
+		}
+		System.out.println(str);
+		System.out.println(token);
+		
+	}
+}
