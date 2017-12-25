@@ -1,0 +1,34 @@
+import java.util.EnumSet;
+
+public class LengthUnits
+{
+	public enum Lengthunits
+	{
+				
+		cm(1), kilometer(100000), meter(100), mile(160934.4), feet(30.48);
+		
+		private double conversionRateToCm;
+
+		private Lengthunits(double conversionRateToCm)
+		{
+			this.conversionRateToCm = conversionRateToCm;
+		}
+	}
+	public enum Day { SUN, MON, TUE, WED, THU, FRI, SAT };
+	
+	public static void main(String[] args)
+	{
+		Lengthunits vec[]=Lengthunits.values();
+		for (Lengthunits l:Lengthunits.values())
+		{
+			System.out.println(l);
+		}
+		
+		EnumSet<Day> subSet = EnumSet.range(Day.SUN, Day.SAT);
+		for(Day day : subSet)
+		{
+		System.out.println(day);
+		}
+	}
+
+}
