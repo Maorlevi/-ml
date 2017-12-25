@@ -1,0 +1,68 @@
+public class Rectangle extends shape
+{
+	private double width;
+	private double hight;
+	public double getWidth()
+	{
+		return width;
+	}
+	public void setWidth(double width)
+	{
+		this.width = width;
+	}
+	public double getHight()
+	{
+		return hight;
+	}
+	public void setHight(double hight)
+	{
+		this.hight = hight;
+	}
+	public Rectangle(double width, double hight)
+	{
+		
+		super();
+		this.width = width;
+		this.hight = hight;
+		System.out.println("rectanle constroctur");
+	}	
+	public double area()
+	{
+		return width*hight;
+	}
+	@Override
+	public String toString()
+	{
+		
+		return width+" "+hight;
+	}
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(hight);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(width);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Rectangle other = (Rectangle) obj;
+		if (Double.doubleToLongBits(hight) != Double.doubleToLongBits(other.hight))
+			return false;
+		if (Double.doubleToLongBits(width) != Double.doubleToLongBits(other.width))
+			return false;
+		return true;
+	}
+	
+}
