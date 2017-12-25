@@ -1,0 +1,24 @@
+public class SimpleLambdaExpressionDemo
+{
+	interface MathOperation
+	{
+		int execute(int a, int b);
+	}
+
+	public int calculate(int a, int b, MathOperation op)
+	{
+		return op.execute(a, b);
+	}
+
+	public static void main(String[] args)
+	{
+		SimpleLambdaExpressionDemo myApp = new SimpleLambdaExpressionDemo();
+		MathOperation addition = (a, b) -> a + b;
+		MathOperation subtraction = (a, b) -> a - b;
+		int num = addition.execute(40, 2);
+		System.out.println("40 + 2 = " + num);
+		System.out.println("20 – 10 = " + myApp.calculate(20, 10, subtraction));
+
+	}
+
+}
