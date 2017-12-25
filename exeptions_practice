@@ -1,0 +1,56 @@
+public class exeptionpractice
+{
+	class MyException extends Exception
+	{
+		MyException(String msg) {
+			super(msg);
+		}
+	}
+
+	public static class MyExceptionHandlingDemo
+	{
+		public static void main(String args[])
+		{
+			int val = 123;
+			try {
+				aaa(val);
+			} catch (MyException e) {
+				e.printStackTrace();
+			} finally {
+				System.out.println("finally always works");
+			}
+			val = -123;
+			try {
+				aaa(val);
+			} catch (MyException e) {
+				e.printStackTrace();
+			} finally {
+				System.out.println("finally always works");
+			}
+		}
+
+		static void aaa(int num) throws MyException {
+			System.out.println("aaa start");
+			bbb(num);
+			System.out.println("aaa end");
+		}
+
+		static void bbb(int val) throws MyException {
+			System.out.println("bbb start");
+			ccc(val);
+			System.out.println("bbb end");
+		}
+
+		static void ccc(int number) throws MyException {
+			System.out.println("ccc start");
+			if (number < 0)
+			{
+				//throw new MyException("negative number");
+			} else {
+				System.out.println("The log of " + number + " is " + Math.log(number));
+			}
+			System.out.println("ccc end");
+		}
+	}
+
+}
