@@ -3,9 +3,9 @@ public class stringpractice
 
 	public static void main(String[] args)
 	{
-		String str1 = "abracadabra";
+		String str1 = "abracadabra";//string pool
 		String str2 = "abra" + "cadabra";
-		String str3 = new String("abracadabra");
+		String str3 = new String("abracadabra");//heap
 		
 		System.out.println(str1==str2);
 		System.out.println(str1==str3);
