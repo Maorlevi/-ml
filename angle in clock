@@ -1,0 +1,30 @@
+public class Angle
+{
+
+	public static void main(String[] args)
+	{
+		System.out.println(angle(3,0));
+		System.out.println(angle(12,30));
+		System.out.println(angle(6,0));
+		System.out.println(angle(4,0));
+	}
+	public static int angle(int h,int m)
+	{
+		int hourangle,minutangle,angle;
+		//check valid input
+		
+		if (h==12)
+			h=0;
+		if (m==60)
+			m=0;
+		
+        hourangle = (int)(0.5 * m + h*30);
+        minutangle = (int)(6*m);
+ 
+        angle = Math.abs(hourangle - minutangle);
+        angle = Math.min(360-angle, angle);
+ 
+        return angle;
+	}
+
+}
