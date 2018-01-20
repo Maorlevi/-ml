@@ -1,0 +1,26 @@
+import java.util.Random;
+
+public class printrandomarr
+{
+
+	public static void main(String[] args)
+	{
+		int arr[]={1,2,3,4,5,6,7,8,9,10};
+		Random rand=new Random();
+		int index,i=arr.length;
+		
+		while(i>0)
+		{
+			index=rand.nextInt(i);
+			System.out.print(arr[index]+" ");
+			if (index!=i-1)
+			{
+				arr[index]=arr[index]-arr[i-1];
+				arr[i-1]=arr[i-1]+arr[index];
+				arr[index]=arr[i-1]-arr[index];
+			}
+			i--;
+		}
+	}
+
+}
